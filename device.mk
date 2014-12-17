@@ -39,43 +39,42 @@ PRODUCT_PACKAGES += \
         librs_jni
 
 PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/init.awifi.usb.rc:root/init.awifi.usb.rc \
-	$(LOCAL_PATH)/init.awifi.rc:root/init.awifi.rc \
-	$(LOCAL_PATH)/fstab.gvar:root/fstab.awifi \
-	$(LOCAL_PATH)/ueventd.awifi.rc:root/ueventd.awifi.rc
+        $(LOCAL_PATH)/rootdir/etc/init.palman.usb.rc:root/init.palman.usb.rc \
+	$(LOCAL_PATH)/rootdir/etc/init.palman.rc:root/init.palman.rc \
+	$(LOCAL_PATH)/rootdir/etc/fstab.palman:root/fstab.palman \
+	$(LOCAL_PATH)/rootdir/etc/ueventd.palman.rc:root/ueventd.palman.rc
 
 PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
-        $(LOCAL_PATH)/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-        $(LOCAL_PATH)/WCNSS_qcom_cfg.ini:system/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-        $(LOCAL_PATH)/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
+	$(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
+	$(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+	$(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+	$(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/audio_policy.conf:system/etc/audio_policy.conf
+	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
-	$(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
+	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml
 
 # Prebuilt kl and kcm keymaps
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/hs_detect.kl:system/usr/keylayout/hs_detect.kl \
-	$(LOCAL_PATH)/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
-	$(LOCAL_PATH)/awifi-keypad-8064.kl:system/usr/keylayout/awifi-keypad-8064.kl
+	$(LOCAL_PATH)/rootdir/usr/keylayout/hs_detect.kl:system/usr/keylayout/hs_detect.kl \
+	$(LOCAL_PATH)/rootdir/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+	$(LOCAL_PATH)/rootdir/usr/keylayout/keypad_8064.kl:system/usr/keylayout/keypad_8064.kl
 
 # Prebuilt input device calibration files
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/touch_mxt1188S.idc:system/usr/idc/touch_mxt1188S.idc
+	$(LOCAL_PATH)/rootdir/usr/idc/touch_dev.idc:system/usr/idc/touch_dev.idc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
 	frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
 	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
 	frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
@@ -85,11 +84,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
-
-# GPS configuration
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/gps.conf:system/etc/gps.conf \
-	$(LOCAL_PATH)/sap.conf:system/etc/sap.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=196608
@@ -168,10 +162,10 @@ PRODUCT_PACKAGES += \
 	lights.msm8960
 
 PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/mixer_paths.xml:system/etc/mixer_paths.xml
+        $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/thermald.conf:system/etc/thermald.conf
+	$(LOCAL_PATH)/configs/thermald.conf:system/etc/thermald.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
@@ -181,21 +175,14 @@ PRODUCT_PACKAGES += \
 	hwaddrs
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
+	$(LOCAL_PATH)/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.bt.bdaddr_path=/data/misc/bdaddr
 
-# This hw ships locked, work around it with loki
-PRODUCT_PACKAGES += \
-	loki.sh \
-	loki_tool_static_gpad \
-	recovery-transform.sh
-
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.radio.noril=true \
 	ro.carrier=wifi-only
-
 
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
 
