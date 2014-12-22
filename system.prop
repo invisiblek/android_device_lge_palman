@@ -2,3 +2,5 @@
 # system.prop for v510
 #
 persist.sys.cabc_off=true
+
+media.stagefright.use-awesome=true
